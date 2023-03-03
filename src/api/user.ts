@@ -1,17 +1,11 @@
-import { Request, Response, Router } from "express";
-import prisma from "../db";
+import { Router } from "express";
+import { fetchUser, loginUser, registerUser } from "../controller/userController";
+import isAuth from "../middlewares/isAuth";
 
 const router = Router();
 
-router.post("/register", async (req: Request, res: Response) => {
-    const user = await prisma.user.create({
-        data: {
-            email: req.body.email,
-            password: req.body.password
-        }
-    });
-
-    res.json(user);
-});
+router.get("/user", isAuth, fetchUser)
+router.post("/register", registerUser);
+router.post("/login", loginUser);
 
 export default router;
