@@ -5,7 +5,9 @@
   "author": "Yohanna Abana <yohanaabana02@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon ./src/app.ts"
+    "dev": "nodemon ./src/app.ts",
+    "build": "tsc -p .",
+    "start": "node ./dist/app.js"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
