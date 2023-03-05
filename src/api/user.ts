@@ -4,7 +4,7 @@ import isAuth from "../middlewares/isAuth";
 
 const router = Router();
 
-router.get("/user", isAuth, fetchUser)
+router.get("/user", isAuth, fetchUser);
 router.post("/register", registerUser);
 router.post("/login", loginUser);
 

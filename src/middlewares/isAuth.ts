@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import prisma from "../db";
+import userModel from "../models/userModel";
 import AppError from "../interface/AppError";
 
 export default async (req: Request, res: Response, next: NextFunction) => {
@@ -12,9 +12,9 @@ export default async (req: Request, res: Response, next: NextFunction) => {
             const decodedToken: any = jwt.verify(token, JWT_SECRET);
 
             if (decodedToken) {
-                const user = await prisma.user.findUnique({ where: { id: decodedToken.id } });
+                const user = await userModel.findById(decodedToken.id);
                 if (user) {
-                    req.user = user;
+                    res.locals.user = user;
                     next();
                     return;
                 }

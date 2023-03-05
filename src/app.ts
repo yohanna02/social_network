@@ -1,18 +1,21 @@
 import express, { NextFunction, Request, Response } from "express";
+import mongoose from "mongoose";
 import dotenv from "dotenv";
 
-import prisma from "./db";
 import userApi from "./api/user";
 import AppError from "./interface/AppError";
 
 dotenv.config();
 
-// prisma.$connect().then(() => {
-//     console.log("Connect to db successfully");
-// }).catch((err) => {
-//     console.error("Error connecting to DB");
-//     console.log(err);
-// });
+const DB_CONNECTION_STRING = process.env.DATABASE_URL as string;
+mongoose.connect(DB_CONNECTION_STRING)
+.then(() => {
+    console.log("👉 Connected to DB successfully");
+})
+.catch((err) => {
+    console.error("Error connecting to database");
+    console.error(err);
+});
 
 const port = process.env.PORT || 3000;
 
