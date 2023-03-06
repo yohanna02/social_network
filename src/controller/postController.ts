@@ -47,3 +47,23 @@ export const fetchPosts = async (req: Request, res: Response, next: NextFunction
         next(err);
     }
 }
+
+export const fetchPost = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const postId = req.params.id;
+        const post = await postModel.findById(postId)
+            .populate("author", "fullName email")
+            .select("text")
+            .select("author")
+            .select("comments")
+            .select("createdAt");
+
+        if (!post) {
+            throw new AppError(404, "Post not found");
+        }
+
+        res.json(post);
+    } catch(err) {
+        next(err);
+    }
+}
