@@ -32,3 +32,18 @@ export const createPost = async (req: Request, res: Response, next: NextFunction
         next(err);
     }
 }
+
+export const fetchPosts = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const posts = await postModel.find()
+            .populate("author", "fullName email")
+            .select("text")
+            .select("author")
+            .select("comments")
+            .select("createdAt");
+
+        res.json(posts);
+    } catch(err) {
+        next(err);
+    }
+}
