@@ -2,7 +2,7 @@ import express, { NextFunction, Request, Response } from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
-import userApi from "./api/user";
+import versionOne_API from "./api/api-v1";
 import AppError from "./interface/AppError";
 
 dotenv.config();
@@ -35,8 +35,7 @@ const setCache = (req: Request, res: Response, next: NextFunction) => {
 }
 
 app.use(setCache);
-
-app.use("/api/v1", userApi);
+app.use("/api/v1", versionOne_API);
 
 const errorLogger = (error: Error, req: Request, res: Response, next: NextFunction) => {
     if (process.env.NODE_ENV === "development")

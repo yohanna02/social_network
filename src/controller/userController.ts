@@ -75,10 +75,7 @@ export const loginUser = async (req: Request, res: Response, next: NextFunction)
 
 export const fetchUser = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const user = res.locals.user as UserModel | undefined;
-        if (!user) {
-            throw new AppError(401, "Not Authorized");
-        }
+        const user = res.locals.user as UserModel;
 
         res.json({
             user: {

@@ -6,7 +6,7 @@ export interface UserModel extends UserI, mongoose.Document {
     updatedAt: Date;
 }
 
-const userSchema = new mongoose.Schema<UserI>({
+const userSchema = new mongoose.Schema({
     fullName: {
         type: String,
         required: true
