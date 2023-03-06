@@ -22,6 +22,20 @@ const port = process.env.PORT || 3000;
 const app = express();
 app.use(express.json());
 
+const setCache = (req: Request, res: Response, next: NextFunction) => {
+    const peroid = 60 * 5;
+    if (req.method === "GET") {
+        res.set("Cache-control", `public, max-age=${peroid}`);
+    }
+    else {
+        res.set("Cache-control", "no-store");
+    }
+
+    next();
+}
+
+app.use(setCache);
+
 app.use("/api/v1", userApi);
 
 const errorLogger = (error: Error, req: Request, res: Response, next: NextFunction) => {
