@@ -40,10 +40,11 @@ export const fetchPosts = async (req: Request, res: Response, next: NextFunction
             .select("text")
             .select("author")
             .select("comments")
-            .select("createdAt");
+            .select("createdAt")
+            .sort({ createdAt: -1 });
 
         res.json(posts);
-    } catch(err) {
+    } catch (err) {
         next(err);
     }
 }
@@ -63,7 +64,7 @@ export const fetchPost = async (req: Request, res: Response, next: NextFunction)
         }
 
         res.json(post);
-    } catch(err) {
+    } catch (err) {
         next(err);
     }
 }
