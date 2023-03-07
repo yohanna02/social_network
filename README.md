@@ -5,7 +5,7 @@
 - [POST - https://forum.nascomsoft.com/api/v1/user/login](https://forum.nascomsoft.com/api/v1/user/login)
 
 - Post JSON Data
-```
+```json
 {
 	"email": "yohanaabana02@gmail.com",
 	"password": "2222222222"
@@ -13,7 +13,7 @@
 ```
 ### Reponse
 - Success Response
-```
+```json
 {
 	"token": "Auth token",
 	"user": {
@@ -23,7 +23,7 @@
 }
 ```
 - Error Response
-```
+```json
 {
 	"success": false,
 	"message": "Email address or Password is not correct"
@@ -35,7 +35,7 @@
 - [POST - https://forum.nascomsoft.com/api/v1/user/register](https://forum.nascomsoft.com/api/v1/user/register)
 
 - Post JSON Data
-```
+```json
 {
 	"fullName": "Yohanna Abana",
 	"email": "yohanaabana02@gmail.com",
@@ -45,14 +45,14 @@
 
 ### Response
 - Success Response
-```
+```json
 {
 	"success": true,
 	"message": "User registered successfully"
 }
 ```
 - Error Response
-```
+```json
 {
 	"success": false,
 	"message": "Email address already registered"
@@ -67,7 +67,7 @@
 ### Response
 
 - Success Response
-```
+```json
 {
 	"user": {
 		"id": "6403427a7e7b2d882b0ee2b2",
@@ -78,7 +78,7 @@
 ```
 
 - Error Response
-```
+```json
 {
 	"success": false,
 	"message": "Not Authorized"
@@ -92,7 +92,7 @@
 - **Header** - authorization = Bearer token
 
 - Post JSON Data
-```
+```json
 {
 	"text": "Post message"
 }
@@ -101,7 +101,7 @@
 ### Response
 
 - Success Response
-```
+```json
 {
 	"_id": "6406e0977483a99abf80b92c",
 	"text": "Post message",
@@ -116,7 +116,7 @@
 ```
 
 - Error Response
-```
+```json
 {
 	"success": false,
 	"message": "Not Authorized"
@@ -132,7 +132,7 @@
 ### Response
 
 - Success Response
-```
+```json
 [
 	{
 		"_id": "6406e0937483a99abf80b927",
@@ -160,7 +160,7 @@
 ```
 
 - Error Response
-```
+```json
 {
 	"success": false,
 	"message": "Not Authorized"
@@ -176,7 +176,7 @@
 ### Response
 
 - Success Response
-```
+```json
 {
 	"_id": "6406e0937483a99abf80b927",
 	"text": "Post 2",
@@ -191,14 +191,14 @@
 ```
 
 - Error Response
-```
+```json
 {
 	"success": false,
 	"message": "Post not found"
 }
 ```
 or
-```
+```json
 {
 	"success": false,
 	"message": "Not Authorized"
